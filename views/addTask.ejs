@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <span class="btn-secondary">New</span><span class="btn-primary">New Task</span>
+        </h1>
+        <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
+          <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="mb-0"><%= error.msg %></p>
+          </div>
+          <% }); %> <% } %>
+          
+        <form action="/tasks/addTask" method="POST">
+          <div class="form-group">
+            <label for="Nmae">Name</label>
+            <input
+                type="name"
+                id="name"
+                name="name"
+                class="form-control form-control-user"
+                placeholder="Enter Exercise Name"
+                value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Description">Description</label>
+            <input
+                type="description"
+                id="description"
+                name="description"
+                class="form-control form-control-user"
+                placeholder="Enter Description"
+                value="<%= typeof description != 'undefined' ? description : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="videoLink">Due date</label>
+            <input
+                type="date"
+                id="dueDate"
+                name="dueDate"
+                class="form-control form-control-user md-form md-outline input-with-post-icon datepicker"
+                placeholder="Enter due date"
+                value="<%= typeof dueDate != 'undefined' ? dueDate : '' %>"
+            />
+          </div>
+          <br>
+          <div class="form-group text-center row">
+            <button type="submit" class="btn btn-success btn-block col-5 ms-4">
+              Add
+            </button>
+            <a href="/dashboard" class="btn btn-primary btn-block col-5 ms-3">Cancel</a>
+          </div> 
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
