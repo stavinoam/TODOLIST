@@ -57,6 +57,11 @@ app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 app.use("/tasks", require("./routes/tasks"));
 
+// Page Not Found
+app.get('*', (req, res)=> {
+  res.status(404).redirect('/PageNotFound');
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

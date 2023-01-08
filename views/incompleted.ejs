@@ -70,11 +70,11 @@
                     <div class="list-group">
                         <%taskList.forEach((task) => {%>
                             <% if (!task.state) { %>
-                                    <% if (0 > new Date(task.dueDate) - task.date) { %>
-                                        <a href="#" class="list-group-item list-group-item-primary">
+                                    <% if (0 > new Date(task.dueDate) - new Date()) { %>
+                                        <div class="list-group-item list-group-item-primary">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1"><%= task.name%></h5>
-                                                <small class="text-muted">
+                                                <small>
                                                   due time: 
                                                   <%= (new Date(task.dueDate)).getDate() %>/
                                                   <%= (new Date(task.dueDate)).getMonth()+1 %>/
@@ -89,14 +89,14 @@
                                                 </div>
                                               <small class="text-muted">
                                                   <% if (task.state) { %>
-                                                      <button type="button" onClick="parent.location='incomplete/<%= task._id %>/incompleted'" class="btn btn-outline-danger">incomplete </button>
+                                                      <button type="button" onClick="parent.location='incomplete/<%= task._id %>/incompleted'" class="btn btn-danger">Incomplete </button>
                                                   <%} else { %>
-                                                      <button type="button" onClick="parent.location='Complete/<%= task._id %>/incompleted'" class="btn btn-outline-success">Complete</button>        
+                                                      <button type="button" onClick="parent.location='Complete/<%= task._id %>/incompleted'" class="btn btn-success">Complete</button>        
                                                   <% } %> 
                                                   
-                                                  <button type="button" onClick="parent.location='deleteTask/<%= task._id %>/incompleted'" class="btn btn-outline-primary">Delete</button>
+                                                  <button type="button" onClick="parent.location='deleteTask/<%= task._id %>/incompleted'" class="btn btn-primary">Delete</button>
                                               </small>
-                                        </a>
+                                            </div>
                                     <%}%>
                             <%}%> 
                         <%})%>
@@ -110,10 +110,10 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2023</span>
+                        <span>Copyright &copy; Web project 2023</span>
                     </div>
                 </div>
             </footer>
@@ -149,23 +149,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Core plugin JavaScript-->
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/static/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/static/js/demo/datatables-demo.js"></script>
 
 </body>
 

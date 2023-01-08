@@ -37,4 +37,9 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
   });
 });
 
+router.get('/PageNotFound', (req, res)=>{
+  res.render('ErrorPage');
+});
+
+
 module.exports = router;
