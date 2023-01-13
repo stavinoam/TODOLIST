@@ -6,7 +6,7 @@ const { sendEmail } = require("../js/mailSender");
 const Task = require("../models/Task");
 
 // Time
-let date = new Date().getDate();
+let date = 0;
 
 // Welcome page
 router.get("/", (req, res) => {
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     //Find incompleted tasks
     Task.find({ state: false }, (err, tasks) => {
       tasks.forEach((task) => {
-        if (new Date(task.dueDate) - task.date < 0) sendEmail(task);
+        if (new Date(task.dueDate) - new Date() < 0) sendEmail(task);
       });
 
       res.render("welcome");
