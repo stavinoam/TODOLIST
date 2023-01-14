@@ -17,9 +17,8 @@ router.get("/", (req, res) => {
       tasks.forEach((task) => {
         if (new Date(task.dueDate) - new Date() < 0) sendEmail(task);
       });
-
-      res.render("welcome");
     });
+    res.render("welcome");
   } else {
     console.log(date);
     res.render("welcome");
